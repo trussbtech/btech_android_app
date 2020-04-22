@@ -11,7 +11,6 @@ node {
 	}	
     stage('Test') {
 		echo 'Testing At master branch'
-		ecoh "sh './gradlew test'"
     }
     stage('Deploy') {
         echo 'Deploying....'
