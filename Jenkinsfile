@@ -1,18 +1,16 @@
 node {
     stage('SCM') {
 		echo 'Gathering code from version control'
-		git branch: '${branch}', url: 'https://github.com/trussbtech/sample_android_app-java.git'
+		git branch: '${branch}', url: 'https://github.com/trussbtech/btech_android_app.git'
     }
     stage('Build') {
-		echo 'Building. Development branch'
+		echo 'Building Master branch'
 		sh 'gradle --version'
-		sh 'chmod a+x ./gradlew'
-		sh './gradlew clean'
-		sh './gradlew build'
+		sh './gradlew build clean'
+		echo 'The build stage passed...'
 	}	
     stage('Test') {
 		echo 'Testing At master branch'
-		sh '.gradlew connectAndriodTesr'
     }
     stage('Deploy') {
         echo 'Deploying....'
