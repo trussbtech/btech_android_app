@@ -5,12 +5,12 @@ import groovy.io.*;
 def call(Map config=[:]) {
 
     def dir = new File(pwd());
-    
+
     new File(dir.path + '/releaseotes.txt').withWriter('utf-8')
-    {   
-        writer ->
-            dir.eachFileRecurse(FileType.ANY) { file -> 
-                if (file.isDirectory()) {
+            {
+                writer ->
+                    dir.eachFileRecurse(FileType.ANY) { file ->
+                        if (file.isDirectory()) {
                    writer.writeLine(file.name); 
                 }
                 else
@@ -18,5 +18,8 @@ def call(Map config=[:]) {
                     writer.writeLine('\t' + file.name + '\t' + file.length());
                 }
            }
+    }
+    if(config.changes != "false") {
+    echo "" chnages
     }
 }
