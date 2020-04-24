@@ -9,6 +9,13 @@ node {
 		sh './gradlew build clean'
 		echo 'The build stage passed...'
 	}	
+	 
+	stage('Tests') {
+		echo 'The testing stage passed...'
+		//Start all the existing tests in the test package 
+		//sh './gradlew --no-daemon --debug :app:connectedDevDebugAndroidTest' 
+	}
+	
     stage('Test') {
 		echo 'Testing At master branch'
     }
