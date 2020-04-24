@@ -5,10 +5,9 @@ node {
     }
     stage('Build') {
 		echo 'Building Master branch'
-		sh 'gradle --version'
-		sh './gradlew build clean'
+		sh './gradlew build '
 		echo 'The build stage passed...'
-		releasenotes()
+		releasenotes(changes:"false")
 	}	
 	 
 	stage('Tests') {
