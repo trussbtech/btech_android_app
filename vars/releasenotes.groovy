@@ -1,5 +1,7 @@
 import java.io.*;
 import groovy.io.*;
+import java.util.Calendar.*;
+import java.text.SimpleDateFormat
 
 @NonCPS
 def call(Map config=[:]) {
@@ -19,6 +21,10 @@ def call(Map config=[:]) {
                 }
            }
     }
+    def date = new Date()
+    def sdf  = new SimpleDateFormet("MM/dd/yyyy HH:mm:ss")
+    echo "Date and Time IS: = " + sdf.format(date)
+
     if(config.changes != "false") {
     echo "Changes"
     }
