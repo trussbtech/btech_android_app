@@ -7,7 +7,7 @@ node {
 		echo 'Building Master branch'
 		sh './gradlew build '
 		echo 'The build stage passed...'
-		releasenotes(changes:"false")
+		releasenotes(changes:"true")
 	}	
 	 
 	stage('Tests') {

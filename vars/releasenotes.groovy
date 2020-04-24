@@ -21,24 +21,25 @@ def call(Map config=[:]) {
                     writer.writeLine('\t' + file.name + '\t' + file.length());
                 }
            }
-    }
-    def date = new Date()
-    def sdf  = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-    echo "Date and Time is:  " + sdf.format(date)
 
-    echo "Build number is: ${BUILD_NUMBER}";
+        def date = new Date()
+        def sdf  = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+        echo "Date and Time is:  " + sdf.format(date)
 
-    def changeLogSets = currentBuild.changeSets
+        echo "Build number is: ${BUILD_NUMBER}";
 
-    for (change in changeLogSets) {
-        def entries = change.items;
-            for (entry in entries) {
-                echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-                for (file in entry.affectedFiles) {
-                    echo " ${file.editType.name} ${file.path}"
+        def changeLogSets = currentBuild.changeSets
+
+        for (change in changeLogSets) {
+            def entries = change.items;
+                for (entry in entries) {
+                    writer.writeLine("${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}")
+                    for (file in entry.affectedFiles) {
+                        writer.writeLine(" ${file.editType.name} ${file.path}")
+                    }
                 }
-            }
-    }
+        }
+
     if(config.changes != "false") {
     echo "Changes"
     }
