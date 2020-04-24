@@ -6,7 +6,7 @@ node {
     }
     stage('Build') {
 		echo 'Building Master branch'
-		sh './gradlew build '
+		sh './gradlew build ' + congif.target
 		echo 'The build stage passed...'
 		releasenotes(changes:"true")
 	}	
