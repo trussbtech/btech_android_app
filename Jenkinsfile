@@ -1,1 +1,1 @@
-genericbuild(target: "./btech_android_app")
+genericbuild(target: "")
