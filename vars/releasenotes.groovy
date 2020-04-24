@@ -28,7 +28,7 @@ def call(Map config=[:]) {
 
     echo "Build number is: ${BUILD_NUMBER}";
 
-    def changeLogSets = currentBuild.ChangeSets
+    def changeLogSets = currentBuild.changeSets
 
     for (change in changeLogSets) {
         def entries = change.items;
